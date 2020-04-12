@@ -11,8 +11,6 @@ public class Student implements Serializable{
 	private String sAddress;
 	private String contactNo;
 	
-	
-	
 	public Student(int id, String sName, String sAddress, String contactNo) {
 		this.id = id;
 		this.sName = sName;

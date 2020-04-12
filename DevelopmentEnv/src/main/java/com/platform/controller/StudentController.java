@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.platform.entity.Student;
+import com.platform.model.Employee;
 import com.platform.service.StudentService;
 
 @RestController
@@ -21,6 +22,19 @@ public class StudentController {
 		return "delete";
 	}
 
+	@RequestMapping("/test")
+	public void testMethod(@RequestBody String  name) {
+		System.out.println("test called"+ name);
+	}
+	@RequestMapping(value = "/pay/{emp}",method = RequestMethod.POST ) 
+	public void doPayment(@RequestBody Employee emp) {
+//			@RequestHeader("empid") String empid,
+//			@RequestHeader("password") String password) {
+		System.out.println("printing Employee =" +emp);
+//		System.out.println("printinh headers =" + empid +" id " + password);
+	}
+	
+	
 //	{"id":"101","sName":"ushi","sAddress":"Latur","contactNo":"9545"}
 	@RequestMapping(value = "/sortbyname/{student}")
 	public Student sortbyName(@RequestBody Student s1) {
@@ -38,5 +52,9 @@ public class StudentController {
 	
 		int result =studentService.findResult(id);
 		System.out.println(result);
+	}
+	@RequestMapping(value ="/sorby" )
+	public void sortbylength() {
+		studentService.sortby();	
 	}
 }
